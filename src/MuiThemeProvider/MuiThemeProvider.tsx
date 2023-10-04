@@ -6,7 +6,7 @@ export type ModeType = "dark" | "light";
 const colorToken = (mode: ModeType) => ({
     ...(mode === "light"
         ? {
-              redAccest: {
+              redAccent: {
                   100: "#fdccd9",
                   200: "#fa9ab4",
                   300: "#f8678e",
@@ -52,7 +52,7 @@ const colorToken = (mode: ModeType) => ({
               },
           }
         : {
-              redAccest: {
+              redAccent: {
                   100: "#31000d",
                   200: "#61011b",
                   300: "#920128",
@@ -99,7 +99,7 @@ const colorToken = (mode: ModeType) => ({
           }),
 });
 
-export const themeSettings = (mode: ModeType) => {
+const themeSettings = (mode: ModeType) => {
     const colors = colorToken(mode);
 
     const theme: ThemeOptions = {
