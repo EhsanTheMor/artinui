@@ -2,7 +2,7 @@
 
 This template provides some file configuration and boilerplate to use easily with react project.
 
-Some basic configurations and settings which is considered in this template:
+Some basic configurations and settings which are considered in this template:
 
 -   Redux store setup and provider settings.
 -   Mui theme provider and dark theme settings.
