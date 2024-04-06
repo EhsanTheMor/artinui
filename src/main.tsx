@@ -5,15 +5,16 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./components/App";
 import Layout from "./components/Layout";
 import { store } from "./store/store";
+import "./main.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-    <React.StrictMode>
-        <Provider store={store}>
-            <BrowserRouter>
-                <Layout>
-                    <App />
-                </Layout>
-            </BrowserRouter>
-        </Provider>
-    </React.StrictMode>
+  <React.StrictMode>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Layout>
+          <App />
+        </Layout>
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>
 );
