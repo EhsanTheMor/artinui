@@ -103,6 +103,18 @@ const themeSettings = (mode: ModeType) => {
   const colors = colorToken(mode);
 
   const theme: ThemeOptions = {
+    components: {
+      MuiLink: {
+        defaultProps: {},
+        styleOverrides: {
+          root: {
+            "&:hover": {
+              cursor: "pointer",
+            },
+          },
+        },
+      },
+    },
     palette: {
       mode: mode,
       ...(mode === "light"
