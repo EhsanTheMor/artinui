@@ -140,38 +140,30 @@ const themeSettings = (mode: ModeType) => {
           }),
     },
     typography: {
-      fontFamily: ["Sans-sarif"].join(","),
+      fontFamily: ['"Vazirmatn"'].join(","),
       fontSize: 14,
       h1: {
-        fontFamily: ["Sans-sarif"].join(","),
         fontSize: 40,
       },
       h2: {
-        fontFamily: ["Sans-sarif"].join(","),
         fontSize: 32,
       },
       h3: {
-        fontFamily: ["Sans-sarif"].join(","),
         fontSize: 24,
       },
       h4: {
-        fontFamily: ["Sans-sarif"].join(","),
         fontSize: 20,
       },
       h5: {
-        fontFamily: ["Sans-sarif"].join(","),
         fontSize: 16,
       },
       h6: {
-        fontFamily: ["Sans-sarif"].join(","),
         fontSize: 14,
       },
       body1: {
-        fontFamily: ["Sans-sarif"].join(","),
         fontSize: 14,
       },
       body2: {
-        fontFamily: ["Sans-sarif"].join(","),
         fontSize: 12,
       },
     },
