@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { AppRoutes } from "../../../constants/routes";
 
 export default function MenuBarRepresentation() {
+  const adminRoutes = AppRoutes.find((i) => i.path === "/admin");
+
   return (
     <>
       <Stack
@@ -11,8 +13,8 @@ export default function MenuBarRepresentation() {
       >
         <Typography>نام و نام خانوادگی</Typography>
 
-        <Stack>
-          {AppRoutes.map((route) => (
+        <Stack spacing={2}>
+          {adminRoutes?.children.map((route) => (
             <Link key={route.name} to={route.path}>
               {route.name}
             </Link>

@@ -7,9 +7,18 @@ export default function App() {
       {AppRoutes.map((route) => (
         <Route
           path={`${route.path}`}
-          Component={route.component}
+          element={route.component}
           key={route.name}
-        />
+        >
+          {route?.children &&
+            route.children.map((sub) => (
+              <Route
+                path={`${sub.path}`}
+                element={sub.component}
+                key={sub.name}
+              ></Route>
+            ))}
+        </Route>
       ))}
     </Routes>
   );

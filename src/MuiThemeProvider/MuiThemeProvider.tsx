@@ -105,7 +105,6 @@ const themeSettings = (mode: ModeType) => {
   const theme: ThemeOptions = {
     components: {
       MuiLink: {
-        defaultProps: {},
         styleOverrides: {
           root: {
             "&:hover": {
