@@ -48,7 +48,9 @@ export default function SemesterRespresentation() {
         {isLoading ? (
           <>Is Loading...</>
         ) : (
-          semesters.map((semester) => <Typography>{semester.title}</Typography>)
+          semesters.map((semester) => (
+            <Typography key={semester.title}>{semester.title}</Typography>
+          ))
         )}
       </Stack>
     </>

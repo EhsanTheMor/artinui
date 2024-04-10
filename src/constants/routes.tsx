@@ -3,14 +3,16 @@ import Semesters from "../features/semesters/Semesters";
 import Seasons from "../features/seasons/pages/Seasons";
 import Tutorials from "../features/tutorials/Tutorials";
 import Admin from "../features/admin/pages/Admin";
+import Signin from "../features/signin/pages/Signin";
 
 export const AppRoutes = [
-  // {
-  //   name: "ورود",
-  //   path: "/signin",
-  //   component: <SignIn />,
-  //   children: undefined,
-  // },
+  {
+    name: "ورود",
+    path: "/signin",
+    isGuarded: false,
+    component: <Signin />,
+    children: undefined,
+  },
   // {
   //   name: "ثبت نام",
   //   path: "/signup",
@@ -38,6 +40,7 @@ export const AppRoutes = [
     name: "صفحه ادمین",
     path: "/admin",
     component: <Admin />,
+    isGuarded: true,
     children: [
       {
         name: "مدیریت کاربران",
