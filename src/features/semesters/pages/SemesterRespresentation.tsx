@@ -6,8 +6,9 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import useSemesterData from "./api-hooks/useSemesterData";
+import useSemesterData from "../api-hooks/useSemesterData";
 import { useState } from "react";
+import SingleSemester from "../components/SingleSemester";
 
 export default function SemesterRespresentation() {
   const { error, isLoading, semesters, isSendingData, sendData } =
@@ -48,9 +49,14 @@ export default function SemesterRespresentation() {
         {isLoading ? (
           <>Is Loading...</>
         ) : (
-          semesters.map((semester) => (
-            <Typography key={semester.title}>{semester.title}</Typography>
-          ))
+          <Stack
+            spacing={1}
+            sx={{ width: "50%", margin: "auto", marginTop: 2 }}
+          >
+            {semesters.map((semester) => (
+              <SingleSemester key={semester.title} title={semester.title} />
+            ))}
+          </Stack>
         )}
       </Stack>
     </>
