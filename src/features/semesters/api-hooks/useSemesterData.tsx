@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { CreateSemesterDto } from "../dtos/create-semester.dto";
-import axios from "axios";
 import { sendSemesterData } from "../api/sendSemester";
 import { fetchSemesterData } from "../api/fetchSemesters";
+import { CreateSemesterResponseDto } from "../dtos/create-semester-response.dto";
 
 const useSemesterData = () => {
-  const [semesters, setSemesters] = useState<CreateSemesterDto[]>([]);
+  const [semesters, setSemesters] = useState<CreateSemesterResponseDto[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isSendingData, setIsSendingData] = useState<boolean>(false);
   const [error, setError] = useState<any>();

@@ -1,16 +1,17 @@
 import { Card, IconButton, Stack, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
-import { deleteOneSemester } from "../slice/semesterSlice";
+import { deleteOneSemester } from "../../semesters/slice/semesterSlice";
 
 type TProps = {
-  title: string;
   id: number;
+  title: string;
 };
 
-export default function SingleSemester(props: TProps) {
+export default function SingleSeason(props: TProps) {
   const isDeleting = useAppSelector((state) => state.semester.isDeleting);
   const dispatch = useAppDispatch();
+
   const handleDelete = (id: number) => {
     dispatch(deleteOneSemester(id));
   };

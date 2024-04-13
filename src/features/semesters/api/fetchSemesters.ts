@@ -1,8 +1,8 @@
-import { CreateSemesterDto } from "../dtos/create-semester.dto";
 import { adminApi } from "../../../interceptors/adminInterceptor";
+import { CreateSemesterResponseDto } from "../dtos/create-semester-response.dto";
 
 export const fetchSemesterData = async () => {
-  const res = await adminApi.get<CreateSemesterDto[]>("/semester");
+  const res = await adminApi.get<CreateSemesterResponseDto[]>("/semester");
 
   return res.data;
 };

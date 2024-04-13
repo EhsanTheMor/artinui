@@ -4,15 +4,21 @@ import {
   FormLabel,
   Stack,
   TextField,
-  Typography,
 } from "@mui/material";
-import useSemesterData from "../api-hooks/useSemesterData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SingleSemester from "../components/SingleSemester";
+import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
+import { addSemester, fetchSemesters } from "../slice/semesterSlice";
 
 export default function SemesterRespresentation() {
-  const { error, isLoading, semesters, isSendingData, sendData } =
-    useSemesterData();
+  const dispatch = useAppDispatch();
+  const { semesters, loading, isSending } = useAppSelector(
+    (state) => state.semester
+  );
+
+  const sendData = () => {
+    dispatch(addSemester({ title: title }));
+  };
 
   const [title, setTitle] = useState<string>("");
 
@@ -41,20 +47,26 @@ export default function SemesterRespresentation() {
               value={title}
             />
           </FormControl>
-          <Button onClick={() => sendData({ title })} variant="contained">
+          <Button
+            onClick={() => sendData()}
+            variant="contained"
+            disabled={isSending}
+          >
             اضافه کردن ترم
           </Button>
         </Stack>
 
-        {isLoading ? (
-          <>Is Loading...</>
-        ) : (
+        {!loading && (
           <Stack
             spacing={1}
-            sx={{ width: "50%", margin: "auto", marginTop: 2 }}
+            sx={{ width: "50%", margin: "auto", marginTop: 10 }}
           >
             {semesters.map((semester) => (
-              <SingleSemester key={semester.title} title={semester.title} />
+              <SingleSemester
+                key={semester.title}
+                title={semester.title}
+                id={semester.id}
+              />
             ))}
           </Stack>
         )}

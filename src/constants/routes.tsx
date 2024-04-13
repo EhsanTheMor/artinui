@@ -1,7 +1,7 @@
 import Users from "../features/users/Users";
 import Semesters from "../features/semesters/pages/Semesters";
 import Seasons from "../features/seasons/pages/Seasons";
-import Tutorials from "../features/tutorials/Tutorials";
+import Tutorials from "../features/tutorials/pages/Tutorials";
 import Admin from "../features/admin/pages/Admin";
 import Signin from "../features/signin/pages/Signin";
 

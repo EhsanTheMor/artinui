@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
 import {
   Button,
   FormControl,
@@ -5,30 +7,29 @@ import {
   Stack,
   TextField,
 } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
-import { useState } from "react";
-import { addSeason, fetchSeasons } from "../slice/seasonSlice";
-import SingleSeason from "../components/SingleSeason";
+import { addTutorial, fetchTutorials } from "../slice/tutorialSlice";
+import SingleTutorial from "../components/SingleTutorial";
 
-export default function SeasonRepresentation() {
+export default function TutorialRepresentation() {
   const dispatch = useAppDispatch();
-  const { seasons, loading, isSending } = useAppSelector(
-    (state) => state.season
+  const { tutorials, loading, isSending } = useAppSelector(
+    (state) => state.tutorial
   );
-  const { semesters } = useAppSelector((state) => state.semester);
 
-  const [semesterId, setSemesterId] = useState<number | null>(null);
+  const { seasons } = useAppSelector((state) => state.season);
+
+  const [seasonId, setSeasonId] = useState<number | null>(null);
   const [title, setTitle] = useState<string>();
 
-  const changeSemester = (id: number) => {
+  const changeSeason = (id: number) => {
     if (!id) return;
-    setSemesterId(id);
-    dispatch(fetchSeasons(id));
+    setSeasonId(id);
+    dispatch(fetchTutorials(id));
   };
 
   const sendData = () => {
-    if (!semesterId || !title) return;
-    dispatch(addSeason({ title: title, semesterId }));
+    if (!seasonId || !title) return;
+    dispatch(addTutorial({ title: title, seasonId }));
   };
 
   return (
@@ -45,11 +46,11 @@ export default function SeasonRepresentation() {
             }}
           >
             <FormLabel required htmlFor="semester-name">
-              اضافه کردن فصل:
+              اضافه کردن درس:
             </FormLabel>
             <TextField
               id="semester-name"
-              label="نام فصل"
+              label="نام درس"
               sx={{ flex: 1 }}
               autoComplete="off"
               onChange={(e) => setTitle(e.target.value)}
@@ -61,7 +62,7 @@ export default function SeasonRepresentation() {
             variant="contained"
             disabled={isSending}
           >
-            اضافه کردن فصل
+            اضافه کردن درس
           </Button>
         </Stack>
 
@@ -71,25 +72,25 @@ export default function SeasonRepresentation() {
             direction="column"
             sx={{ width: "10vw", marginTop: 10 }}
           >
-            {semesters.map((i) => (
+            {seasons.map((i) => (
               <Button
-                onClick={() => changeSemester(i.id)}
-                variant={semesterId == i.id ? "outlined" : "contained"}
+                onClick={() => changeSeason(i.id)}
+                variant={seasonId == i.id ? "outlined" : "contained"}
               >
                 {i.title}
               </Button>
             ))}
           </Stack>
 
-          {semesterId && (
+          {seasonId && (
             <>
               {!loading && (
                 <Stack
                   spacing={1}
                   sx={{ width: "50%", margin: "auto", marginTop: 10 }}
                 >
-                  {seasons.map((season) => (
-                    <SingleSeason
+                  {tutorials.map((season) => (
+                    <SingleTutorial
                       key={season.title}
                       title={season.title}
                       id={season.id}

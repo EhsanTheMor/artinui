@@ -1,9 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
-import AuthReducers from "../slices/AuthSlice";
+import semesterSlice from "../features/semesters/slice/semesterSlice";
+import seasonSlice from "../features/seasons/slice/seasonSlice";
+import tutorialSlice from "../features/tutorials/slice/tutorialSlice";
+import AuthSlice from "../slices/AuthSlice";
 
 export const store = configureStore({
   reducer: {
-    auth: AuthReducers,
+    auth: AuthSlice,
+    semester: semesterSlice,
+    season: seasonSlice,
+    tutorial: tutorialSlice,
   },
 });
 
