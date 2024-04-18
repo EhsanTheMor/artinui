@@ -4,6 +4,7 @@ import Seasons from "../features/seasons/pages/Seasons";
 import Tutorials from "../features/tutorials/pages/Tutorials";
 import Admin from "../features/admin/pages/Admin";
 import Signin from "../features/signin/pages/Signin";
+import ContentRepresentation from "../features/content/pages/ContentRepresentation";
 
 export const AppRoutes = [
   {
@@ -61,6 +62,11 @@ export const AppRoutes = [
         name: "مدیریت درس‌ها",
         path: "/admin/tutorials",
         component: <Tutorials />,
+      },
+      {
+        name: "مدیریت محتوا",
+        path: "/admin/content",
+        component: <ContentRepresentation />,
       },
     ],
   },

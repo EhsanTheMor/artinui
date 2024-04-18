@@ -5,10 +5,10 @@ import {
   Stack,
   TextField,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SingleSemester from "../components/SingleSemester";
 import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
-import { addSemester, fetchSemesters } from "../slice/semesterSlice";
+import { addSemester } from "../slice/semesterSlice";
 
 export default function SemesterRespresentation() {
   const dispatch = useAppDispatch();
@@ -18,6 +18,7 @@ export default function SemesterRespresentation() {
 
   const sendData = () => {
     dispatch(addSemester({ title: title }));
+    setTitle("");
   };
 
   const [title, setTitle] = useState<string>("");

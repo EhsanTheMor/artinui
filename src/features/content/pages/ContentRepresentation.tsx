@@ -7,30 +7,26 @@ import {
 } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
 import { useState } from "react";
-import { addSeason, fetchSeasons } from "../slice/seasonSlice";
-import SingleSeason from "../components/SingleSeason";
+import { fetchTutorials } from "../../tutorials/slice/tutorialSlice";
 
-export default function SeasonRepresentation() {
+export default function ContentRepresentation() {
   const dispatch = useAppDispatch();
-  const { seasons, loading, isSending } = useAppSelector(
-    (state) => state.season
+  const { tutorials } = useAppSelector((state) => state.tutorial);
+
+  const [title, setTitle] = useState("");
+  const [tutorialId, setTutorialId] = useState<number | null>(null);
+
+  const { contents, isSending, loading } = useAppSelector(
+    (state) => state.content
   );
-  const { semesters } = useAppSelector((state) => state.semester);
 
-  const [semesterId, setSemesterId] = useState<number | null>(null);
-  const [title, setTitle] = useState<string>();
-
-  const changeSemester = (id: number) => {
+  const changeTutorialId = (id: number) => {
     if (!id) return;
-    setSemesterId(id);
-    dispatch(fetchSeasons(id));
+    setTutorialId(id);
+    dispatch(fetchTutorials(id));
   };
 
-  const sendData = () => {
-    if (!semesterId || !title) return;
-    dispatch(addSeason({ title: title, semesterId }));
-    setTitle("");
-  };
+  const sendData = () => {};
 
   return (
     <>
@@ -45,9 +41,7 @@ export default function SeasonRepresentation() {
               gap: 1,
             }}
           >
-            <FormLabel required htmlFor="semester-name">
-              اضافه کردن فصل:
-            </FormLabel>
+            <FormLabel required htmlFor="semester-name"></FormLabel>
             <TextField
               id="semester-name"
               label="نام فصل"
@@ -72,17 +66,17 @@ export default function SeasonRepresentation() {
             direction="column"
             sx={{ width: "10vw", marginTop: 10 }}
           >
-            {semesters.map((i) => (
+            {tutorials.map((i) => (
               <Button
-                onClick={() => changeSemester(i.id)}
-                variant={semesterId == i.id ? "outlined" : "contained"}
+                onClick={() => changeTutorialId(i.id)}
+                variant={tutorialId == i.id ? "outlined" : "contained"}
               >
                 {i.title}
               </Button>
             ))}
           </Stack>
 
-          {semesterId && (
+          {/* {semesterId && (
             <>
               {!loading && (
                 <Stack
@@ -99,7 +93,7 @@ export default function SeasonRepresentation() {
                 </Stack>
               )}
             </>
-          )}
+          )} */}
         </Stack>
       </Stack>
     </>
